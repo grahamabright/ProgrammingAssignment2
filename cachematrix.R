@@ -1,7 +1,6 @@
-## Put comments here that give an overall description of what your
-## functions do
+## Caching the Mean of a Vector
 
-## Write a short comment describing this function
+## A calculation time saver
 
 makeCacheMatrix <- function(x = matrix()) {
 
@@ -12,4 +11,16 @@ makeCacheMatrix <- function(x = matrix()) {
 
 cacheSolve <- function(x, ...) {
         ## Return a matrix that is the inverse of 'x'
+}
+
+cachemean <- function(x, ...) {
+  m <- x$getmean()
+  if(!is.null(m)) {
+    message("getting cached data")
+    return(m)
+  }
+  data <- x$get()
+  m <- mean(data, ...)
+  x$setmean(m)
+  m
 }
